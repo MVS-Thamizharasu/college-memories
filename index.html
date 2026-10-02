@@ -210,14 +210,68 @@ uploadBtn.addEventListener("click",async()=>{
   try{
     for(let i=0;i<selectedFiles.length;i++){
       const file=selectedFiles[i],base64=await fileToBase64(file);
-      const ext=(file.name.split(".").pop()||"").toLowerCase();
-      const safeName=(uploaderName.value.trim().replace(/[^a-zA-Z0-9_-]/g,"_")||"");
-      const baseParts=[category.value.replace(/\s+/g,""),batch.value,course.value];
-      if(safeName) baseParts.push(safeName);
-      const mediaLabel=file.type.startsWith("video/")?"video":"photo";
-      const sameCount=selectedFiles.slice(0,i+1).filter(f=>f.type.startsWith("video/")===file.type.startsWith("video/")).length;
-      const generatedName=baseParts.filter(Boolean).join("_")+"_"+mediaLabel+"_"+String(sameCount).padStart(2,"0")+"."+ext;
-      await uploadSingleFile(generatedName,base64,file.type,category.value,uploaderName.value.trim(),batch.value.trim(),course.value);
+     const ext=(file.name.split(".").pop()||"").toLowerCase();
+
+function getOtherValue(selectId, inputId){
+  const select = document.getElementById(selectId);
+  const input = document.getElementById(inputId);
+
+  if(select.value === "Other"){
+    return input.value.trim();
+  }
+
+  return select.value;
+}
+
+function cleanPart(value){
+  return value
+    .trim()
+    .replace(/\s*-\s*/g,"-")
+    .replace(/[^a-zA-Z0-9-]/g,"");
+}
+
+const categoryName = cleanPart(
+  getOtherValue("category","categoryOther")
+);
+
+const courseName = cleanPart(
+  getOtherValue("course","courseOther")
+);
+
+const batchName = cleanPart(
+  getOtherValue("batch","batchOther")
+);
+
+const safeName = cleanPart(uploaderName.value);
+
+const baseParts = [
+  categoryName,
+  batchName,
+  courseName
+];
+
+if(safeName){
+  baseParts.push(safeName);
+}
+
+const mediaLabel =
+  file.type.startsWith("video/") ? "video" : "photo";
+
+const sameCount =
+  selectedFiles
+    .slice(0,i+1)
+    .filter(
+      f => f.type.startsWith("video/") ===
+           file.type.startsWith("video/")
+    ).length;
+
+const generatedName =
+  baseParts.filter(Boolean).join("_") +
+  "_" + mediaLabel +
+  "_" + String(sameCount).padStart(2,"0") +
+  "." + ext;
+      
+await uploadSingleFile(generatedName,base64,file.type,category.value,uploaderName.value.trim(),batch.value.trim(),course.value);
       showStatus(`Sending ${i+1} / ${selectedFiles.length} files... ⏳`,"success");
     }
     showStatus("✅ Upload requests sent! Your photos/videos will be saved to Google Drive.","success");
