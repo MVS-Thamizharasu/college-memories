@@ -94,8 +94,16 @@ a{color:inherit;text-decoration:none}
 <div class="section-head"><h2>📤 Upload College Photos &amp; Videos</h2><p>College-la edutha Group Photos, Graduation Day Photos &amp; Videos-ஐ இங்கே share pannunga.</p></div>
 <div class="upload-options">
 <label>Category
-<select id="category">
-<option>Graduation Day</option><option>Group Photos</option><option>Friends</option><option>College Events</option><option>Cultural</option><option>Sports</option><option>Farewell</option><option>Other</option>
+<select id="category" required>
+  <option value="" disabled selected>Select Category</option>
+  <option value="GraduationDay">Graduation Day</option>
+  <option value="GroupPhotos">Group Photos</option>
+  <option value="Friends">Friends</option>
+  <option value="CollegeEvents">College Events</option>
+  <option value="Cultural">Cultural</option>
+  <option value="Sports">Sports</option>
+  <option value="Farewell">Farewell</option>
+  <option value="Other">Other</option>
 </select>
 </label>
 <label>Your Name <span>(Optional)</span><input id="uploaderName" type="text" placeholder="Your Name"></label>
