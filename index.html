@@ -105,6 +105,12 @@ a{color:inherit;text-decoration:none}
   <option value="Farewell">Farewell</option>
   <option value="Other">Other</option>
 </select>
+<input
+  id="categoryOther"
+  type="text"
+  placeholder="Enter Category"
+  style="display:none;"
+>
 </label>
 <label>Your Name <span>(Optional)</span><input id="uploaderName" type="text" placeholder="Your Name"></label>
 <label>Course / Group
@@ -120,6 +126,12 @@ a{color:inherit;text-decoration:none}
   <option value="MCom">M.Com.</option>
   <option value="Other">Other</option>
 </select>
+  <input
+  id="courseOther"
+  type="text"
+  placeholder="Enter Course / Group"
+  style="display:none;"
+>
 </label>
 <label>Batch
 <select id="batch" required>
@@ -137,6 +149,12 @@ a{color:inherit;text-decoration:none}
   <option value="2027-2030">2027 - 2030</option>
   <option value="Other">Other</option>
 </select>
+  <input
+  id="batchOther"
+  type="text"
+  placeholder="Enter Batch"
+  style="display:none;"
+>
 </label>
 </div>
 <div class="drop" id="dropZone">
@@ -222,6 +240,28 @@ function uploadSingleFile(fileName,base64Data,mimeType,categoryValue,uploaderNam
 }
 function showStatus(message,type){status.textContent=message;status.className="status "+type}
 function hideStatus(){status.textContent="";status.className="status"}
+
+  function setupOtherInput(selectId, inputId) {
+  const select = document.getElementById(selectId);
+  const input = document.getElementById(inputId);
+
+  select.addEventListener("change", () => {
+    if (select.value === "Other") {
+      input.style.display = "block";
+      input.required = true;
+      input.focus();
+    } else {
+      input.style.display = "none";
+      input.required = false;
+      input.value = "";
+    }
+  });
+}
+
+setupOtherInput("category", "categoryOther");
+setupOtherInput("course", "courseOther");
+setupOtherInput("batch", "batchOther");
+  
 </script>
 </body>
 </html>
