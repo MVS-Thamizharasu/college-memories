@@ -100,20 +100,34 @@ a{color:inherit;text-decoration:none}
 </label>
 <label>Your Name <span>(Optional)</span><input id="uploaderName" type="text" placeholder="Your Name"></label>
 <label>Course / Group
-<select id="course">
-<option value="BComGeneral">B.Com. General</option>
-<option value="BComCA">B.Com. Computer Application</option>
-<option value="BScComputerScience">B.Sc. Computer Science</option>
-<option value="BCA">B.C.A.</option>
-<option value="BScChemistry">B.Sc. Chemistry</option>
-<option value="BScBiochemistry">B.Sc. Bio-Chemistry</option>
-<option value="BBA">B.B.A.</option>
-<option value="Other">Other</option>
+<select id="course" required>
+  <option value="" disabled selected>Select Course / Group</option>
+  <option value="BComGeneral">B.Com. General</option>
+  <option value="BComCA">B.Com. Computer Application</option>
+  <option value="BScComputerScience">B.Sc. Computer Science</option>
+  <option value="BCA">B.C.A.</option>
+  <option value="BScChemistry">B.Sc. Chemistry</option>
+  <option value="BScBiochemistry">B.Sc. Bio-Chemistry</option>
+  <option value="BBA">B.B.A.</option>
+  <option value="MCom">M.Com.</option>
+  <option value="Other">Other</option>
 </select>
 </label>
 <label>Batch
-<select id="batch">
-<option value="2017-2020">2017 - 2020</option><option value="2018-2021">2018 - 2021</option><option value="2019-2022">2019 - 2022</option><option value="2020-2023">2020 - 2023</option><option value="2021-2024">2021 - 2024</option><option value="2022-2025">2022 - 2025</option><option value="2023-2026">2023 - 2026</option><option value="2024-2027">2024 - 2027</option><option value="2025-2028">2025 - 2028</option><option value="2026-2029">2026 - 2029</option><option value="2027-2030">2027 - 2030</option><option value="Other">Other</option>
+<select id="batch" required>
+  <option value="" disabled selected>Select Batch</option>
+  <option value="2017-2020">2017 - 2020</option>
+  <option value="2018-2021">2018 - 2021</option>
+  <option value="2019-2022">2019 - 2022</option>
+  <option value="2020-2023">2020 - 2023</option>
+  <option value="2021-2024">2021 - 2024</option>
+  <option value="2022-2025">2022 - 2025</option>
+  <option value="2023-2026">2023 - 2026</option>
+  <option value="2024-2027">2024 - 2027</option>
+  <option value="2025-2028">2025 - 2028</option>
+  <option value="2026-2029">2026 - 2029</option>
+  <option value="2027-2030">2027 - 2030</option>
+  <option value="Other">Other</option>
 </select>
 </label>
 </div>
